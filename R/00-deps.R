@@ -21,12 +21,12 @@ import <- function(package.namei, src = "cran") {
 
 # MAIN ------------------------------------------------------------------
 install.packages("devtools")
-devtools::install <- github("rstudio/packrat")
+devtools::install_github("rstudio/packrat")
 
 # PACKRAT ---------------------------------------------------------------
 # Initialize packrat in current directory and enable packrat mode for the
 # project.
-packrat::init(getwd())
+packrat::init(paste0("../", getwd()))
 
 # INSTALL ---------------------------------------------------------------
 sapply(cran.libs, function(x) import(x))
