@@ -1,6 +1,4 @@
 ### A workspace template for R
-Author: Sam Boysel
-Contact: sboysel@gmail.com
 
 * [GNU Make](http://www.gnu.org/software/make/)
 * [minimal make](http://kbroman.org/minimal_make/)
