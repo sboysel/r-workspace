@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\hypersetup{colorlinks=true,
+            linkcolor=blue}
+\usepackage[margin=1in]{geometry} 
+
+\begin{document}
+
+<<setup,include=FALSE>>=
+library(ggplot2)
+library(knitr)
+library(mapproj)
+library(tikzDevice)
+opts_chunk$set(fig.align='center',
+               fig.height=6,
+               fig.width=6,
+               fig.pos='ht',
+               dev='tikz')
+data <- data.frame(V1 = runif(1000),
+                   V2 = runif(1000),
+                   V3 = rnorm(1000),
+                   V4 = sample(LETTERS[1:4], 1000, replace = TRUE),
+                   V5 = runif(1000))
+rw.df <- data.frame(path = cumsum(rnorm(n = 1000)),
+		            period = 1:1000,
+                    phase = sort(rep(c('A','B', 'C', 'D', 'E'), 200)))
+@
+
+\tableofcontents
+
+\listoffigures
+
+\section{Math} 
+Here are some brilliant maths:
+\[A\sum_{i = 0}^{\infty}y_{i}x_{i}^{2} \]
+Please also see Figure \ref{fig:fig1}. Another cool plot can be seen
+in Figure \ref{fig:fig2}.  See also, Figure \ref{fig:fig3}.  Consider even more
+maths:
+\[ \mathcal{B}_{\epsilon}(\mathbf{u}) = \{ \mathbf{x} \in \mathbb{R} | \lVert
+\mathbf{x} - \mathbf{u} \rVert < \epsilon\}\]
+I would also like to express the solution to the least squares problem:
+\[\hat{\beta} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'Y \]
+Hopefully, this works.  Here is a change.  Hooray!  Now everytime I save my
+\texttt{.Rnw} file, \texttt{knitr} and \texttt{latexmk} are called by
+\texttt{watchman} from my \texttt{Makefile}.
+
+\section{Code}
+<<code_sample>>=
+sample(LETTERS[1:5], 10, replace = TRUE)
+@
+
+<<code_sample2,echo=TRUE>>=
+hello_world <- function() {
+  print('Hello World!')
+}
+hello_world()
+@
+
+<<rw_explore>>=
+head(rw.df)
+@
+
+\clearpage
+\section{Figures}
+
+<<fig1,message=FALSE,warning=FALSE,fig.cap='Some Distributions'>>=
+ggplot(data = data, aes(x = V1, fill = V4)) +
+  geom_histogram(colour = 'white') +
+  facet_wrap(~ V4)
+@
+
+<<fig2,message=FALSE,warning=FALSE,fig.cap='Some Scatterplots'>>=
+ggplot(data = data, aes(x = V1, y = V2, size = V5, fill = V4)) +
+  geom_point(colour = 'white', alpha = 0.8, pch = 21)
+@
+
+\clearpage
+<<fig3,message=FALSE,warning=FALSE,fig.cap='A Map',fig.width=10>>=
+map('state', projection = 'albers', par = c(lat0 = 30, lat1 = 40))
+@
+
+\clearpage
+<<fig4,message=FALSE,warning=FALSE,fig.cap='A Random Walk',fig.width=10>>=
+ggplot(data = rw.df) +
+  geom_line(aes(x = period, y = path, colour = phase))
+@
+
+\end{document}

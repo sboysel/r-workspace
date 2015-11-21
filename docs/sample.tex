@@ -1,0 +1,202 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\hypersetup{colorlinks=true,
+            linkcolor=blue}
+\usepackage[margin=1in]{geometry}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+
+\tableofcontents
+
+\listoffigures
+
+\section{Math} 
+Here are some brilliant maths:
+\[A\sum_{i = 0}^{\infty}y_{i}x_{i}^{2} \]
+Please also see Figure \ref{fig:fig1}. Another cool plot can be seen
+in Figure \ref{fig:fig2}.  See also, Figure \ref{fig:fig3}.  Consider even more
+maths:
+\[ \mathcal{B}_{\epsilon}(\mathbf{u}) = \{ \mathbf{x} \in \mathbb{R} | \lVert
+\mathbf{x} - \mathbf{u} \rVert < \epsilon\}\]
+I would also like to express the solution to the least squares problem:
+\[\hat{\beta} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'Y \]
+Hopefully, this works.  Here is a change.  Hooray!  Now everytime I save my
+\texttt{.Rnw} file, \texttt{knitr} and \texttt{latexmk} are called by
+\texttt{watchman} from my \texttt{Makefile}.
+
+\section{Code}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{sample}\hlstd{(LETTERS[}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{],} \hlnum{10}\hlstd{,} \hlkwc{replace} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##  [1] "B" "A" "B" "E" "A" "B" "A" "E" "C" "B"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{hello_world} \hlkwb{<-} \hlkwa{function}\hlstd{() \{}
+  \hlkwd{print}\hlstd{(}\hlstr{'Hello World!'}\hlstd{)}
+\hlstd{\}}
+\hlkwd{hello_world}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+## [1] "Hello World!"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{head}\hlstd{(rw.df)}
+\end{alltt}
+\begin{verbatim}
+##          path period phase
+## 1  0.27538280      1     A
+## 2 -1.42617511      2     A
+## 3 -0.91183677      3     A
+## 4  0.32759316      4     A
+## 5  0.97533127      5     A
+## 6 -0.08553271      6     A
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\clearpage
+\section{Figures}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= data,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= V1,} \hlkwc{fill} \hlstd{= V4))} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{colour} \hlstd{=} \hlstr{'white'}\hlstd{)} \hlopt{+}
+  \hlkwd{facet_wrap}\hlstd{(}\hlopt{~} \hlstd{V4)}
+\end{alltt}
+\end{kframe}\begin{figure}[ht]
+
+{\centering \includegraphics[width=\maxwidth]{figure/fig1-1} 
+
+}
+
+\caption[Some Distributions]{Some Distributions}\label{fig:fig1}
+\end{figure}
+
+
+\end{knitrout}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= data,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= V1,} \hlkwc{y} \hlstd{= V2,} \hlkwc{size} \hlstd{= V5,} \hlkwc{fill} \hlstd{= V4))} \hlopt{+}
+  \hlkwd{geom_point}\hlstd{(}\hlkwc{colour} \hlstd{=} \hlstr{'white'}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.8}\hlstd{,} \hlkwc{pch} \hlstd{=} \hlnum{21}\hlstd{)}
+\end{alltt}
+\end{kframe}\begin{figure}[ht]
+
+{\centering \includegraphics[width=\maxwidth]{figure/fig2-1} 
+
+}
+
+\caption[Some Scatterplots]{Some Scatterplots}\label{fig:fig2}
+\end{figure}
+
+
+\end{knitrout}
+
+\clearpage
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{map}\hlstd{(}\hlstr{'state'}\hlstd{,} \hlkwc{projection} \hlstd{=} \hlstr{'albers'}\hlstd{,} \hlkwc{par} \hlstd{=} \hlkwd{c}\hlstd{(}\hlkwc{lat0} \hlstd{=} \hlnum{30}\hlstd{,} \hlkwc{lat1} \hlstd{=} \hlnum{40}\hlstd{))}
+\end{alltt}
+\end{kframe}\begin{figure}[ht]
+
+{\centering \includegraphics[width=\maxwidth]{figure/fig3-1} 
+
+}
+
+\caption[A Map]{A Map}\label{fig:fig3}
+\end{figure}
+
+
+\end{knitrout}
+
+\clearpage
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= rw.df)} \hlopt{+}
+  \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= period,} \hlkwc{y} \hlstd{= path,} \hlkwc{colour} \hlstd{= phase))}
+\end{alltt}
+\end{kframe}\begin{figure}[ht]
+
+{\centering \includegraphics[width=\maxwidth]{figure/fig4-1} 
+
+}
+
+\caption[A Random Walk]{A Random Walk}\label{fig:fig4}
+\end{figure}
+
+
+\end{knitrout}
+
+\end{document}
