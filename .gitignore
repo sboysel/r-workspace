@@ -1,0 +1,9 @@
+*tikzDictionary
+*.aux
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.out
+*.toc
+*.swp
